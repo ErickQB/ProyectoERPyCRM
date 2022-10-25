@@ -1,0 +1,53 @@
+﻿@model IEnumerable<ProyectoX.Models.Vendedor>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Vendedores</h1>
+
+<p>
+    <a asp-action="Create">Crear</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Codigo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ComisionVenta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Especializacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdEmpleadoNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Codigo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ComisionVenta) %
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Especializacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdEmpleadoNavigation.Apellido)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdVendedor">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.IdVendedor">Detalles</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdVendedor">Eliminar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

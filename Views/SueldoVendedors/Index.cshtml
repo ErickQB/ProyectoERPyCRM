@@ -1,0 +1,85 @@
+﻿@model IEnumerable<ProyectoX.Models.SueldoVendedor>
+
+@{
+    ViewData["Title"] = "Pago Comision Vendedores";
+}
+
+<h1>Pago Comision Vendedores</h1>
+
+<p>
+    <a asp-action="Create">Crear Nuevo Pago</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Mes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Anio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalVenta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalComision)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descuento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalPago)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Estado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdVendedorNavigation)
+            </th>
+            <th>Opciones</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Anio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalVenta)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalComision)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descuento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalPago)
+            </td>
+            <td>
+                @if (item.Estado.Contains("0"))
+                {
+                    <label>NO Pagado</label>
+                }
+                else
+                {
+                    <label>Pagado</label>
+                }
+                <!--Html.DisplayFor(modelItem => item.Estado)-->
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdVendedorNavigation.Codigo)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdSueldoVendedor">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.IdSueldoVendedor">Detalles</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdSueldoVendedor">Eliminar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

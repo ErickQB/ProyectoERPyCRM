@@ -1,0 +1,75 @@
+﻿@model IEnumerable<ProyectoX.Models.SueldoEmpleado>
+
+@{
+    ViewData["Title"] = "Pago Sueldo Empleados";
+}
+
+<h1>PAGO SUELDO EMPLEADOS</h1>
+
+<p>
+    <a asp-action="Create">Crear Pago Sueldo</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Mes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Anio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descuento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalPago)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Estado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdEmpleadoNavigation)
+            </th>
+            <th>Opciones</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Anio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descuento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalPago)
+            </td>
+            <td>
+                @if (item.Estado.Contains("0"))
+                {
+                    <label>NO Pagado</label>
+                }
+                else
+                {
+                    <label>Pagado</label>
+                }
+                <!--
+                    Html.DisplayFor(modelItem => item.Estado)
+                -->
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdEmpleadoNavigation.CodigoEmpleado)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdSueldoEmpleado">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.IdSueldoEmpleado">Detalles</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdSueldoEmpleado">Eliminar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

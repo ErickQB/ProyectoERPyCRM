@@ -1,0 +1,47 @@
+﻿@model IEnumerable<ProyectoX.Models.TipoCliente>
+
+@{
+    ViewData["Title"] = "Tipo Clientes";
+}
+
+<h1>CLASIFICACION CLIENTES</h1>
+
+<p>
+    <a asp-action="Create">Crear Tipo Cliente</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Codigo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </th>
+            <th>Opciones</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Codigo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripcion)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdTipoCliente">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.IdTipoCliente">Detalles</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdTipoCliente">Eliminar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

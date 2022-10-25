@@ -1,0 +1,188 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - 3E-W Software</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/style.css" />
+
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-primary border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">3E-W Software</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <partial name="_LoginPartial" />
+                    <ul class="navbar-nav flex-grow-1">
+
+                        <!--<li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    </li>-->
+                        @if (Context.User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-white" asp-area="" asp-controller="Dashboard" asp-action="Index">Inicio</a>
+                            </li>
+                            <li class="btn-group nav">
+                                <button type="button" class="btn navbar-btn" style="background-color:aliceblue">Venta</button>
+                                <button type="button" class="btn navbar-btn dropdown-toggle" data-toggle="dropdown">
+                                    <span class="caret"></span>
+                                    <span class="sr-only">Toggle Dropdown</span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Clientes" asp-action="Index">Clientes</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="TipoClientes" asp-action="Index">Tipo Clientes</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Despachoes" asp-action="Index">Despachos</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Cobroes" asp-action="Index">Cobro</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="EnvioVentas" asp-action="Index">Envios</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="CotizacionVentas" asp-action="Index">Cotizaciones</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="FacturaVentas" asp-action="Index">Facturacion</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="btn-group nav">
+                                <button type="button" class="btn navbar-btn" style="background-color:aliceblue">Compra</button>
+                                <button type="button" class="btn navbar-btn dropdown-toggle" data-toggle="dropdown">
+                                    <span class="caret"></span>
+                                    <span class="sr-only">Toggle Dropdown</span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu">
+                                    <!--<li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="CotizacionCompra" asp-action="Index">Cotizaciones</a>
+                                    </li>-->
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="FacturaCompras" asp-action="Index">Facturas</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="PagoCompras" asp-action="Index">Pago Compras</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="TipoPagoes" asp-action="Index">Tipo Pago</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="TipoConsumoes" asp-action="Index">Categoria Consumos</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Proveedors" asp-action="Index">Proveedor</a>
+                                    </li>
+                                    <!--<li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Devolucion" asp-action="Index">Devoluciones</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="DevolucionManual" asp-action="Index">Devolucion Manual</a>
+                                    </li>-->
+                                </ul>
+                            </li>
+                            <li class="btn-group nav">
+                                <button type="button" class="btn navbar-btn" style="background-color:aliceblue">Administrativo</button>
+                                <button type="button" class="btn navbar-btn dropdown-toggle" data-toggle="dropdown">
+                                    <span class="caret"></span>
+                                    <span class="sr-only">Toggle Dropdown</span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Inventarios" asp-action="Index">Inventario</a>
+                                    </li>
+                                    <!--<li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="InventarioIngresoManual" asp-action="Index">Carga Manual Inventario</a>
+    </li>-->
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Bodegas" asp-action="Index">Bodegas</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="BodegaProductoes" asp-action="Index">Asignar Bodega a Productos</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Productoes" asp-action="Index">Productos</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Empleadoes" asp-action="Index">Empleados</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Vendedors" asp-action="Index">Vendedores</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Departamentoes" asp-action="Index">Departamentos Administrativos</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="SueldoEmpleadoes" asp-action="Index">Pago Sueldo Empleados</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="SueldoVendedors" asp-action="Index">Pago Comisiones Vendedores</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="PagoPlanillas" asp-action="Index">Pago Bonificaciones</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Tiendas" asp-action="Index">Tiendas</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="TiendaSucursals" asp-action="Index">Sucursales</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="EmpleadoSucursals" asp-action="Index">Empleados Sucursales</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Vehiculos" asp-action="Index">Vehiculos</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="TransporteEntregas" asp-action="Index">Transporte Entrega</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <!--<li class="btn-group nav">
+                                <button type="button" class="btn navbar-btn" style="background-color:aliceblue">Marketing</button>
+                                <button type="button" class="btn navbar-btn dropdown-toggle" data-toggle="dropdown">
+                                    <span class="caret"></span>
+                                    <span class="sr-only">Toggle Dropdown</span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Oferta" asp-action="Index">Ofertas</a>
+                                    </li>
+                                </ul>
+                            </li>-->
+                        }
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2021 - ProyectoX - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

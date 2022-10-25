@@ -1,0 +1,53 @@
+﻿@model IEnumerable<ProyectoX.Models.Cobro>
+
+@{
+    ViewData["Title"] = "Cobros";
+}
+
+<h1>COBRO FACTURAS</h1>
+
+<p>
+    <a asp-action="Create">Crear Cobro</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Fecha)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Correlativo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdFacturaNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdTipoPagoNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fecha)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Correlativo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdFacturaNavigation.Correlativo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdTipoPagoNavigation.Nombre)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdCobro">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.IdCobro">Detalles</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdCobro">Eliminar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

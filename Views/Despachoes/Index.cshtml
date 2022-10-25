@@ -1,0 +1,59 @@
+﻿@model IEnumerable<ProyectoX.Models.Despacho>
+
+@{
+    ViewData["Title"] = "Despacho";
+}
+
+<h1>DESPACHOS</h1>
+
+<p>
+    <a asp-action="Create">Nuevo Despacho</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Fecha)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DiaSalida)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HoraSalida)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LugarDespacho)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdFacturaNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fecha)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DiaSalida)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HoraSalida)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LugarDespacho)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdFacturaNavigation.Correlativo)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdDespacho">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.IdDespacho">Detalles</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdDespacho">Eliminar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

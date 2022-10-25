@@ -1,0 +1,53 @@
+﻿@model IEnumerable<ProyectoX.Models.Inventario>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>INVENTARIO</h1>
+
+<p>
+    <a asp-action="Create">Crear Inventario</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaConteo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HoraConteo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Observaciones)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdEmpleadoEncargadoNavigation)
+            </th>
+            <th>Opciones</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaConteo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HoraConteo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Observaciones)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdEmpleadoEncargadoNavigation.Apellido)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdInventario">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.IdInventario">Detalles</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdInventario">Eliminar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

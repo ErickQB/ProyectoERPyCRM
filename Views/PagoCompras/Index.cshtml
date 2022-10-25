@@ -1,0 +1,53 @@
+﻿@model IEnumerable<ProyectoX.Models.PagoCompra>
+
+@{
+    ViewData["Title"] = "Pago Compra";
+}
+
+<h1>PAGO DE COMPRAS</h1>
+
+<p>
+    <a asp-action="Create">Crear Nuevo Pago</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaPago)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Total)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdFacturaCompraNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdTipoPagoNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaPago)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Total)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdFacturaCompraNavigation.Serie)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdTipoPagoNavigation.Nombre)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdPagoCompra">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.IdPagoCompra">Detalle</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdPagoCompra">Eliminar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

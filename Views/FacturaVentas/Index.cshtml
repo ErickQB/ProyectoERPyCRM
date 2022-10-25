@@ -1,0 +1,97 @@
+﻿@model IEnumerable<ProyectoX.Models.FacturaVenta>
+
+@{
+    ViewData["Title"] = "Factura Venta";
+}
+
+<h1>FACTURACION VENTA</h1>
+
+<!--<p>
+    <a asp-action="Create">Create New</a>
+</p>-->
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Fecha)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DireccionFactura)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DireccionEntrega)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Correlativo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NitCliente)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Iva)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SubTotal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descuento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Total)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdClienteNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdCotizacionVentaNavigation)
+            </th>
+
+            <th>Opciones</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fecha)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DireccionFactura)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DireccionEntrega)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Correlativo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NitCliente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Iva)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SubTotal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descuento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Total)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdClienteNavigation.Apellido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdCotizacionVentaNavigation.EstadoCotizacion)
+            </td>
+            <td>
+                <!--<a asp-action="Edit" asp-route-id="@item.IdFacturaVenta">Editar</a> |-->
+                <a asp-action="Details" asp-route-id="@item.IdFacturaVenta">Detalles</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdFacturaVenta">Eliminar</a> |
+                @Html.ActionLink("Detalles", "Index", "FacturaDetalleVentas", new { id_Factura = item.IdFacturaVenta }, null)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

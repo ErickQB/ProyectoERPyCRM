@@ -1,0 +1,83 @@
+﻿@model IEnumerable<ProyectoX.Models.BodegaProducto>
+
+@{
+    ViewData["Title"] = "Bodega Productos";
+}
+
+<h1>ASIGNAR BODEGAS</h1>
+
+<p>
+    <a asp-action="Create">Asignar Bodega a Productos</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NoEdificio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nivel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Habitacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Estanteria)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NivelEstanteria)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PosicionEstanteria)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cantidad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdBodegaNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdProductoNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NoEdificio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nivel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Habitacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estanteria)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NivelEstanteria)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PosicionEstanteria)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cantidad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdBodegaNavigation.Codigo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdProductoNavigation.Nombre)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdBodegaProducto">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.IdBodegaProducto">Detalles</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdBodegaProducto">Eliminar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

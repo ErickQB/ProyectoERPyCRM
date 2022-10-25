@@ -1,0 +1,53 @@
+﻿@model IEnumerable<ProyectoX.Models.CotizacionDetalleVenta>
+
+@{
+    ViewData["Title"] = "Lineas";
+}
+
+<h1>Lineas</h1>
+
+<p>
+    @Html.ActionLink("Agregar Producto", "Create", "CotizacionDetalleVentas", new { id_cotizacion = ViewBag.IdCotizacionVenta }, null)
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Cantidad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrecioUnitario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SubTotal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdProductoNavigation)
+            </th>
+            <th>Opciones</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cantidad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrecioUnitario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SubTotal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdProductoNavigation.Nombre)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdCotizacionDetalleVenta">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.IdCotizacionDetalleVenta">Detalle</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdCotizacionDetalleVenta">Eliminar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

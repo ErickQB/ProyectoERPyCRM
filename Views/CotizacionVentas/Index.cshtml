@@ -1,0 +1,70 @@
+﻿@model IEnumerable<ProyectoX.Models.CotizacionVenta>
+
+@{
+    ViewData["Title"] = "Cotizacion";
+}
+
+<h1>COTIZACIONES VENTAS</h1>
+
+<p>
+    <a asp-action="Create">Crear Cotizacion</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Fecha)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SubTotal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descuento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Total)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdClienteNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdVendedorNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fecha)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SubTotal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descuento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Total)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdClienteNavigation.Apellido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdVendedorNavigation.Codigo)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdCotizacionVenta">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.IdCotizacionVenta">Detalles</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdCotizacionVenta">Eliminar</a> |
+                @Html.ActionLink("Agregar", "Index", "CotizacionDetalleVentas", new { id_cotizacion = item.IdCotizacionVenta }, null) |
+                @if (item.Estado == null)
+                {
+                    @Html.ActionLink("Facturar", "Factura", "CotizacionVentas", new { id_cotizacion = item.IdCotizacionVenta }, null)
+                }
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

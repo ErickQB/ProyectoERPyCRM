@@ -1,0 +1,53 @@
+﻿@model IEnumerable<ProyectoX.Models.Bodega>
+
+@{
+    ViewData["Title"] = "Bodegas";
+}
+
+<h1>BODEGAS</h1>
+
+<p>
+    <a asp-action="Create">Crear Nueva Bodega</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Codigo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ubicacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Capacidad)
+            </th>
+            <th>Opciones</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Codigo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ubicacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Capacidad)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdBodega">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.IdBodega">Detalles</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdBodega">Eliminar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

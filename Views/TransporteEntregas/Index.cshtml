@@ -1,0 +1,77 @@
+﻿@model IEnumerable<ProyectoX.Models.TransporteEntrega>
+
+@{
+    ViewData["Title"] = "Rutas";
+}
+
+<h1>RUTA TRANSPORTE</h1>
+
+<p>
+    <a asp-action="Create">Crear Ruta</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.HoraSalida)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaSalida)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HoraRegreso)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaRegreso)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KilometrajeSalida)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KilometrajeEntrada)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdConductorNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdVehiculoNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.HoraSalida)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaSalida)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HoraRegreso)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaRegreso)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KilometrajeSalida)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KilometrajeEntrada)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdConductorNavigation.Apellido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdVehiculoNavigation.Marca)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdTransporteEntrega">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.IdTransporteEntrega">Detalle</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdTransporteEntrega">Eliminar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

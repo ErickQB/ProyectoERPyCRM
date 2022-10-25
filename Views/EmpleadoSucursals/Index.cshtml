@@ -1,0 +1,53 @@
+﻿@model IEnumerable<ProyectoX.Models.EmpleadoSucursal>
+
+@{
+    ViewData["Title"] = "Empleado Sucursal";
+}
+
+<h1>EMPLEADOS POR SUCURSAL</h1>
+
+<p>
+    <a asp-action="Create">Asignar Empleado</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdDepartamentoNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdEmpleadoNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdTiendaSucursalNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdVendedorNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdDepartamentoNavigation.Codigo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdEmpleadoNavigation.Apellido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdTiendaSucursalNavigation.Direccion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdVendedorNavigation.Codigo)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdEmpleadoSucursal">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.IdEmpleadoSucursal">Detalles</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdEmpleadoSucursal">Eliminar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
